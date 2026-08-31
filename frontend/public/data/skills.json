@@ -1,0 +1,86 @@
+[
+  {
+    "category": "编程语言",
+    "icon": "code",
+    "items": [
+      {
+        "name": "Python",
+        "level": 90,
+        "desc": "pandas 清洗、特征工程、自动化脚本"
+      },
+      {
+        "name": "SQL",
+        "level": 85,
+        "desc": "Hive SQL / ClickHouse / MySQL"
+      },
+      {
+        "name": "Shell",
+        "level": 70,
+        "desc": "调度脚本、数据采集自动化"
+      }
+    ]
+  },
+  {
+    "category": "机器学习",
+    "icon": "brain",
+    "items": [
+      {
+        "name": "XGBoost",
+        "level": 85,
+        "desc": "分类、预测模型全流程构建"
+      },
+      {
+        "name": "Prophet",
+        "level": 80,
+        "desc": "业务流量时序预测"
+      },
+      {
+        "name": "随机森林",
+        "level": 85,
+        "desc": "故障诊断、综合效果评估"
+      }
+    ]
+  },
+  {
+    "category": "大数据与数仓",
+    "icon": "database",
+    "items": [
+      {
+        "name": "Hive 数仓建模",
+        "level": 80,
+        "desc": "ODS/DIM/DWD 分层、维度建模、UDF"
+      },
+      {
+        "name": "Kafka / Flume",
+        "level": 75,
+        "desc": "实时日志采集链路搭建"
+      },
+      {
+        "name": "ClickHouse",
+        "level": 75,
+        "desc": "低延迟分析引擎、Spark JDBC 入库"
+      }
+    ]
+  },
+  {
+    "category": "可视化与工具",
+    "icon": "chart",
+    "items": [
+      {
+        "name": "FineBI",
+        "level": 80,
+        "desc": "可下钻、多筛选交互看板"
+      },
+      {
+        "name": "Streamlit / Vue",
+        "level": 70,
+        "desc": "AI 应用与前端协同开发"
+      },
+      {
+        "name": "Office / WPS",
+        "level": 90,
+        "desc": "数据报告、业务分析文档"
+      }
+    ]
+  }
+]
