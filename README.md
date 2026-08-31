@@ -3,7 +3,9 @@
 基于简历的单页个人网站，后端 Flask 提供 REST API，前端 Vue3 + Element Plus，
 整体为 Hand-Drawn（手绘/涂鸦）设计风格：歪斜边框、硬偏移阴影、便签贴纸、纸张纹理。
 
-线上版本部署在腾讯 EdgeOne Pages（纯静态模式）；本地开发使用 Flask，两者页面与数据完全一致。
+线上版本部署在 **GitHub Pages**（纯静态模式，每次 push 自动部署）；本地开发使用 Flask，两者页面与数据完全一致。
+
+**线上地址**：https://aaglaming.github.io/Personal_Website/
 
 ## 目录结构
 
@@ -61,15 +63,14 @@ cd frontend && npm run dev
 
 访问 http://localhost:5173
 
-## 线上部署（腾讯 EdgeOne Pages，免费）
+## 线上部署（GitHub Pages，免费）
 
-1. 推送本仓库到 GitHub
-2. 打开 [EdgeOne Pages 控制台](https://console.cloud.tencent.com/edgeone/pages)，用 GitHub 账号登录并授权
-3. 「创建项目」→ 选择 GitHub 导入 → 选中本仓库
-4. 构建配置填写：
-   - 构建命令：`cd frontend && npm install && npm run build`
-   - 输出目录：`frontend/dist`
-5. 部署完成后获得 `xxx.edgeone.app` 免费域名（国内可访问、不休眠）
+- 工作流：`.github/workflows/deploy.yml`，push 到 main 自动构建部署
+- 构建命令：`npm run build -- --base=/Personal_Website/`（GitHub Pages 子路径）
+- 仓库 Settings → Pages → Source 需设为 **GitHub Actions**
+
+> 备选：EdgeOne Pages（构建命令 `cd frontend && npm install && npm run build`，输出目录 `frontend/dist`），
+> 但其免费默认域名目前有登录鉴权，仅预览可用，公开访问需绑定自定义域名。
 
 ## 修改内容
 
