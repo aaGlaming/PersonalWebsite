@@ -8,61 +8,76 @@ const year = new Date().getFullYear()
 onMounted(async () => {
   profile.value = await getProfile().catch(() => ({}))
 })
+
+function top() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 </script>
 
 <template>
   <footer class="footer">
-    <svg class="wavy-top" viewBox="0 0 1200 30" preserveAspectRatio="none" fill="none">
-      <path
-        d="M0 15 C 100 2, 200 28, 300 15 C 400 2, 500 28, 600 15 C 700 2, 800 28, 900 15 C 1000 2, 1100 28, 1200 15"
-        stroke="#2d2d2d" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 8"
-      />
-    </svg>
-
-    <div class="inner hd-container">
-      <p class="sig">{{ profile.name }} · {{ profile.title }}</p>
-      <nav class="flinks">
-        <a :href="`mailto:${profile.email}`" class="hd-link">发邮件给我</a>
-        <span class="dot">✦</span>
-        <a href="#" class="hd-link" @click.prevent>回到顶部 ↑</a>
-      </nav>
-      <p class="copy">© {{ year }} 手写于纸上 · 用心排版于代码里</p>
+    <div class="art-container">
+      <hr class="rule" />
+      <div class="inner">
+        <p class="sig">
+          {{ profile.name }}
+          <span>{{ profile.title }}</span>
+        </p>
+        <nav>
+          <a :href="`mailto:${profile.email}`">Write</a>
+          <a href="#home" @click.prevent="top">Index ↑</a>
+        </nav>
+        <p class="copy">© {{ year }} {{ profile.studio || 'Atelier' }} · Ivory / Charcoal / Vermilion</p>
+      </div>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .footer {
-  margin-top: 40px;
-  padding: 0 16px 32px;
-}
-.wavy-top {
-  display: block;
-  width: 100%;
-  height: 30px;
+  padding: 0 0 48px;
 }
 .inner {
-  text-align: center;
-  padding-top: 24px;
+  display: grid;
+  gap: 16px;
+  padding-top: 28px;
 }
 .sig {
-  font-family: var(--font-marker);
-  font-size: 24px;
-  margin: 0 0 10px;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 28px;
 }
-.flinks {
+.sig span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  margin-top: 6px;
+}
+nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  font-size: 17px;
+  gap: 24px;
 }
-.dot {
-  color: var(--hd-accent);
+nav a {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
+nav a:hover { border-bottom-color: var(--vermilion); color: var(--vermilion); }
 .copy {
-  margin: 14px 0 0;
-  font-size: 15px;
-  color: rgba(45, 45, 45, 0.45);
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--warm-gray);
+}
+@media (min-width: 720px) {
+  .inner {
+    grid-template-columns: 1fr auto auto;
+    align-items: end;
+  }
 }
 </style>

@@ -1,29 +1,58 @@
 [
   {
-    "id": "teddy-cup",
-    "name": "生产线故障自动识别与人员配置",
+    "id": "my-rag",
+    "name": "个人知识库 RAG",
     "role": "负责人",
-    "period": "2024.04 - 2024.05",
+    "period": "2026.06 — 2026.09",
     "featured": true,
-    "summary": "第十五届泰迪杯数据挖掘挑战赛项目，建模解决生产线故障自动识别与人员配置问题。",
+    "medium": "Vue 3 / FastAPI / Chroma",
+    "url": "https://github.com/aaGlaming/My-Owned-RAG",
+    "summary": "手写 RAG 管线的个人知识库：上传文档 → 解析切分 → 本地 BGE 向量化 → 混合检索 → OpenAI 兼容 LLM 流式生成，回答带来源。",
     "points": [
-      "使用 Python 对 700 万条以上数据进行清洗，并处理数据失衡",
-      "根据工业流程分析数据特征，筛选关键维度，通过定义新标签构建新特征",
-      "构建随机森林模型进行故障诊断，采用准确率、召回率、精确率和 F1 值综合评估识别效果"
+      "独立实现 Loader / Splitter / Embedding / Store / Fusion / Retrieve / Prompt / Generate，不套 LangChain",
+      "默认向量 + BM25 经 RRF 融合；多轮追问先 Query Rewrite；低于阈值则拒答且不调用 LLM",
+      "SSE 流式输出，来源含文件名、页码与片段；评测脚本与线上共用 retrieve()，对比 Hit@K / MRR",
+      "小样本评测（2026-09-07，20 问）：hybrid Hit@3 85%、MRR 0.7625，优于纯向量；可打包为 Windows 桌面应用"
     ],
     "tags": [
-      "Python",
-      "随机森林",
-      "特征工程",
-      "数据清洗"
+      "RAG",
+      "FastAPI",
+      "Chroma",
+      "BGE",
+      "Hybrid Search"
+    ]
+  },
+  {
+    "id": "naiwa",
+    "name": "NAIWADIY · 奶蛙世界",
+    "role": "负责人",
+    "period": "2026",
+    "featured": true,
+    "medium": "Vue 3 / FastAPI / PWA",
+    "url": "https://aaglaming.github.io/NaiWa-Web/",
+    "summary": "以独立视觉系统呈现的奶蛙主题站点：448+ 表情图库，抽卡、塔罗、梗图、心情测试、成就与桌宠，支持 PWA 离线访问。",
+    "points": [
+      "Vue 3 + Vite + Pinia + Vue Router，13 条懒加载路由；FastAPI 提供图库与联系接口，静态模式回退 images.json",
+      "抽卡含四档稀有度、保底与十连；图鉴 / 收藏 / 成就经 localStorage 持久化",
+      "Canvas 壁纸与梗图生成、塔罗牌阵、心情测试与可拖拽桌宠，组成完整互动档案",
+      "Manifest + Service Worker 缓存，GitHub Pages 自动部署"
+    ],
+    "tags": [
+      "Vue",
+      "PWA",
+      "Pinia",
+      "Canvas",
+      "FastAPI"
     ]
   },
   {
     "id": "ai-agent",
     "name": "数据分析智能体项目",
     "role": "负责人",
-    "period": "2025.05 - 2025.06",
-    "featured": true,
+    "period": "2025.05 — 2025.06",
+    "featured": false,
+    "medium": "Python / Streamlit / LangChain",
+    "url": "",
     "summary": "基于 Python、Streamlit、LangChain 开发集成多种 AI 能力的智能处理平台，涵盖文本分析与数据分析两大核心模块。",
     "points": [
       "文本分析模块支持摘要、翻译、情感分析、文本生成及基于文档/网页的智能问答",
@@ -42,8 +71,10 @@
     "id": "ad-warehouse",
     "name": "广告投放数仓与流量分析可视化平台",
     "role": "组员",
-    "period": "2024.05 - 2024.06",
+    "period": "2024.05 — 2024.06",
     "featured": false,
+    "medium": "Hive / Kafka / ClickHouse",
+    "url": "",
     "summary": "搭建广告投放全链路数仓，从日志采集到可视化看板，识别异常流量并支撑投放运营实时监控。",
     "points": [
       "搭建 Flume+Kafka 实时日志采集链路，DataX 全量同步 MySQL 业务库至 HDFS，Shell 调度自动化采集入 ODS 层",
@@ -61,11 +92,34 @@
     ]
   },
   {
+    "id": "teddy-cup",
+    "name": "生产线故障自动识别与人员配置",
+    "role": "负责人",
+    "period": "2024.04 — 2024.05",
+    "featured": false,
+    "medium": "Python / Random Forest",
+    "url": "",
+    "summary": "第十五届泰迪杯数据挖掘挑战赛项目，建模解决生产线故障自动识别与人员配置问题。",
+    "points": [
+      "使用 Python 对 700 万条以上数据进行清洗，并处理数据失衡",
+      "根据工业流程分析数据特征，筛选关键维度，通过定义新标签构建新特征",
+      "构建随机森林模型进行故障诊断，采用准确率、召回率、精确率和 F1 值综合评估识别效果"
+    ],
+    "tags": [
+      "Python",
+      "随机森林",
+      "特征工程",
+      "数据清洗"
+    ]
+  },
+  {
     "id": "e-commerce",
     "name": "基于 SpringBoot 的电商管理系统",
     "role": "负责人",
-    "period": "2024.05 - 2024.06",
+    "period": "2024.05 — 2024.06",
     "featured": false,
+    "medium": "SpringBoot / Vue / MySQL",
+    "url": "",
     "summary": "SpringBoot + Vue 技术栈，构建涵盖商品、用户、订单、数据分析核心模块的电商管理平台。",
     "points": [
       "满足客户购物（浏览、下单支付、订单查询）与商户管理（上下架、库存监控、数据统计）需求",

@@ -1,0 +1,198 @@
+/* ============================================================
+   Artistic / Gallery 设计系统
+   Ivory × Charcoal × Vermilion
+   ============================================================ */
+:root {
+  --paper: #f1ede3;
+  --warm-white: #f7f5ef;
+  --charcoal: #1d1c19;
+  --ink: #11110f;
+  --warm-gray: #8a867c;
+  --vermilion: #b74735;
+  --olive: #656b4e;
+  --line: rgba(29, 28, 25, 0.18);
+  --line-strong: rgba(29, 28, 25, 0.45);
+
+  --font-serif: "Instrument Serif", "Songti SC", "Noto Serif SC", Georgia, serif;
+  --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+
+  --pad: clamp(20px, 4vw, 56px);
+  --max: 1280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--charcoal);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(rgba(29, 28, 25, 0.035) 0.6px, transparent 0.7px),
+    linear-gradient(180deg, var(--paper), var(--warm-white));
+  background-size: 3px 3px, 100% 100%;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+::selection {
+  background: var(--vermilion);
+  color: var(--warm-white);
+}
+
+a {
+  color: inherit;
+}
+
+.art-container {
+  width: min(var(--max), calc(100% - var(--pad) * 2));
+  margin: 0 auto;
+}
+
+.art-section {
+  padding: clamp(72px, 10vw, 140px) 0;
+  scroll-margin-top: 72px;
+}
+
+#home {
+  scroll-margin-top: 0;
+}
+
+.meta {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--line-strong);
+  margin: 0;
+}
+
+.art-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.35s ease, gap 0.35s ease, color 0.35s ease;
+}
+
+.art-link:hover,
+.art-link:focus-visible {
+  color: var(--vermilion);
+  border-bottom-color: var(--vermilion);
+  gap: 14px;
+  outline: none;
+}
+
+.art-link .arrow {
+  display: inline-block;
+  transition: transform 0.35s ease;
+}
+
+.art-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid var(--vermilion);
+  outline-offset: 4px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 500;
+  background: var(--charcoal);
+  color: var(--warm-white);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  pointer-events: none;
+}
+
+.backtop {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 80;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--charcoal);
+  background: var(--paper);
+  color: var(--charcoal);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.backtop:hover {
+  background: var(--charcoal);
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #171614;
+    --warm-white: #1d1c19;
+    --charcoal: #e8e2d6;
+    --ink: #f7f5ef;
+    --warm-gray: #9a958a;
+    --line: rgba(232, 226, 214, 0.16);
+    --line-strong: rgba(232, 226, 214, 0.4);
+  }
+  body {
+    background-image:
+      radial-gradient(rgba(232, 226, 214, 0.04) 0.6px, transparent 0.7px),
+      linear-gradient(180deg, #171614, #1a1916);
+  }
+  .backtop {
+    background: #171614;
+  }
+  .toast {
+    background: #e8e2d6;
+    color: #171614;
+  }
+}

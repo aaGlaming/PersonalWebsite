@@ -1,85 +1,85 @@
 [
   {
-    "category": "编程语言",
+    "category": "语言与工程",
     "icon": "code",
     "items": [
       {
         "name": "Python",
         "level": 90,
-        "desc": "pandas 清洗、特征工程、自动化脚本"
+        "desc": "FastAPI、RAG 管线、评测脚本、数据处理"
+      },
+      {
+        "name": "JavaScript / Vue 3",
+        "level": 80,
+        "desc": "单页应用、状态管理、SSE 流式界面"
       },
       {
         "name": "SQL",
-        "level": 85,
-        "desc": "Hive SQL / ClickHouse / MySQL"
-      },
-      {
-        "name": "Shell",
-        "level": 70,
-        "desc": "调度脚本、数据采集自动化"
+        "level": 80,
+        "desc": "SQLite / MySQL 业务数据与日志查询"
       }
     ]
   },
   {
-    "category": "机器学习",
+    "category": "LLM 应用",
     "icon": "brain",
     "items": [
       {
-        "name": "XGBoost",
-        "level": 85,
-        "desc": "分类、预测模型全流程构建"
+        "name": "RAG",
+        "level": 90,
+        "desc": "切分、Embedding、混合检索、来源引用、拒答"
       },
       {
-        "name": "Prophet",
-        "level": 80,
-        "desc": "业务流量时序预测"
+        "name": "Prompt / Agent",
+        "level": 85,
+        "desc": "系统提示、多轮改写、LangChain 工具调用"
       },
       {
-        "name": "随机森林",
+        "name": "OpenAI 兼容 API",
         "level": 85,
-        "desc": "故障诊断、综合效果评估"
+        "desc": "DeepSeek / 千问等，流式 Chat Completions"
       }
     ]
   },
   {
-    "category": "大数据与数仓",
+    "category": "检索与后端",
     "icon": "database",
     "items": [
       {
-        "name": "Hive 数仓建模",
+        "name": "FastAPI",
+        "level": 85,
+        "desc": "REST、SSE、后台任务、配置与鉴权脱敏"
+      },
+      {
+        "name": "向量库 / Embedding",
         "level": 80,
-        "desc": "ODS/DIM/DWD 分层、维度建模、UDF"
+        "desc": "Chroma、BGE，知识库隔离与入库流水线"
       },
       {
-        "name": "Kafka / Flume",
-        "level": 75,
-        "desc": "实时日志采集链路搭建"
-      },
-      {
-        "name": "ClickHouse",
-        "level": 75,
-        "desc": "低延迟分析引擎、Spark JDBC 入库"
+        "name": "Hybrid Search",
+        "level": 80,
+        "desc": "BM25 + 向量 RRF 融合，阈值过滤与评测"
       }
     ]
   },
   {
-    "category": "可视化与工具",
+    "category": "前端与交付",
     "icon": "chart",
     "items": [
       {
-        "name": "FineBI",
+        "name": "Vue 3 / TypeScript",
         "level": 80,
-        "desc": "可下钻、多筛选交互看板"
+        "desc": "对话、知识库、设置页与路由拆分"
       },
       {
-        "name": "Streamlit / Vue",
-        "level": 70,
-        "desc": "AI 应用与前端协同开发"
+        "name": "流式交互 / PWA",
+        "level": 75,
+        "desc": "SSE 逐字输出、Service Worker、静态托管"
       },
       {
-        "name": "Office / WPS",
-        "level": 90,
-        "desc": "数据报告、业务分析文档"
+        "name": "Git / 桌面包",
+        "level": 75,
+        "desc": "版本协作；Tauri + PyInstaller 本地交付"
       }
     ]
   }

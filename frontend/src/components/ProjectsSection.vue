@@ -10,145 +10,117 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section id="projects" class="hd-section">
-    <div class="hd-container">
-      <div class="hd-section-title">
-        <h2>项目经历</h2>
-        <svg class="squiggle" viewBox="0 0 120 20" fill="none">
-          <path
-            d="M4 12 C 20 4, 32 18, 48 11 C 64 4, 78 18, 94 11 C 104 7, 110 9, 116 10"
-            stroke="#ff4d4d" stroke-width="3" stroke-linecap="round"
-          />
-        </svg>
-      </div>
+  <section id="projects" class="art-section">
+    <div class="art-container">
+      <header class="head">
+        <p class="meta">03 — Selected works</p>
+        <h2>作品</h2>
+      </header>
+      <p class="lede">
+        前两件为近期可演示应用；末两件为竞赛与课程系统档案。
+      </p>
+      <hr class="rule" />
 
-      <div class="grid">
-        <article
-          v-for="(p, i) in projects"
-          :key="p.id"
-          class="project"
-          :class="{ featured: p.featured }"
-          :style="{ transform: `rotate(${[1, -1.2, -0.8, 1.4][i % 4]}deg)` }"
-        >
-          <span v-if="p.featured" class="hd-tape"></span>
-          <span v-else class="hd-tack"></span>
-
-          <header>
-            <h3>{{ p.name }}</h3>
-            <div class="meta">
-              <span class="role" :class="p.role === '负责人' ? 'lead' : 'member'">
-                {{ p.role }}
-              </span>
-              <span class="period">{{ p.period }}</span>
-            </div>
-          </header>
-
-          <p class="summary">{{ p.summary }}</p>
-
-          <ul>
-            <li v-for="(pt, j) in p.points" :key="j">{{ pt }}</li>
-          </ul>
-
+      <article v-for="p in projects" :key="p.id" class="work">
+        <h3>{{ p.name }}</h3>
+        <p class="summary">{{ p.summary }}</p>
+        <ul>
+          <li v-for="(pt, j) in p.points" :key="j">{{ pt }}</li>
+        </ul>
+        <div class="foot">
           <div class="tags">
-            <el-tag v-for="t in p.tags" :key="t" size="large">{{ t }}</el-tag>
+            <span v-for="t in p.tags" :key="t" class="tag">{{ t }}</span>
           </div>
-        </article>
-      </div>
+          <a
+            v-if="p.url"
+            class="art-link"
+            :href="p.url"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View archive <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
     </div>
   </section>
 </template>
 
 <style scoped>
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-}
-@media (min-width: 768px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-}
-.project {
-  position: relative;
-  background: #fff;
-  border: 2.5px solid var(--hd-border);
-  border-radius: var(--wobbly-md);
-  box-shadow: var(--shadow-sm);
-  padding: 34px 26px 24px;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-.project:hover {
-  transform: rotate(0deg) translateY(-3px) !important;
-  box-shadow: var(--shadow);
-}
-.project.featured {
-  background: var(--hd-postit);
-}
-.featured-badge {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  font-family: var(--font-marker);
-  font-size: 14px;
-  color: var(--hd-accent);
-  transform: rotate(6deg);
-}
-header h3 {
-  margin: 0 0 6px;
-  font-size: 24px;
-}
-.meta {
+.head {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
 }
-.role {
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 0 12px;
-  border: 2px solid var(--hd-border);
-  border-radius: var(--wobbly-sm);
+h2 {
+  margin: 0;
+  font-size: clamp(48px, 7vw, 92px);
 }
-.role.lead {
-  background: var(--hd-accent);
-  color: #fff;
+.lede {
+  margin: 0 0 28px;
+  max-width: 46ch;
+  color: var(--warm-gray);
+  font-size: 15px;
 }
-.role.member {
-  background: var(--hd-muted);
+.work {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--line-strong);
 }
-.period {
-  font-family: var(--font-hand);
-  color: var(--hd-blue);
-  font-size: 16px;
+h3 {
+  margin: 0 0 16px;
+  font-size: clamp(32px, 4vw, 48px);
+  max-width: none;
 }
 .summary {
-  margin: 0 0 12px;
-  font-size: 16px;
-  color: rgba(45, 45, 45, 0.8);
+  margin: 0 0 22px;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 72ch;
 }
 ul {
-  margin: 0 0 16px;
-  padding-left: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 li {
+  position: relative;
+  padding: 12px 0 12px 18px;
   font-size: 15px;
   line-height: 1.75;
-  margin-bottom: 4px;
+  color: color-mix(in srgb, var(--charcoal) 82%, transparent);
+  border-top: 1px solid var(--line);
 }
-li::marker {
-  color: var(--hd-accent);
+li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 7px;
+  height: 1px;
+  background: var(--vermilion);
+}
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 24px;
 }
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px 18px;
 }
-.tags .el-tag {
-  background: #fff;
-  color: var(--hd-fg);
-}
-.featured .tags .el-tag {
-  background: #fff;
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
 }
 </style>

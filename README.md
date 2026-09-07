@@ -1,7 +1,7 @@
-# 个人网站 · 陆杨磊（Flask + Vue3 手绘风格）
+# 个人网站 · 陆杨磊（Flask + Vue3 · Artistic）
 
-基于简历的单页个人网站，后端 Flask 提供 REST API，前端 Vue3 + Element Plus，
-整体为 Hand-Drawn（手绘/涂鸦）设计风格：歪斜边框、硬偏移阴影、便签贴纸、纸张纹理。
+基于简历的单页个人网站，后端 Flask 提供 REST API，前端 Vue3，
+整体为当代艺术指导 / 编辑排版风格：象牙纸底、炭黑、朱红点缀，巨型标题与展览目录式作品档案。
 
 线上版本部署在 **GitHub Pages**（纯静态模式，每次 push 自动部署）；本地开发使用 Flask，两者页面与数据完全一致。
 
@@ -16,11 +16,11 @@ Personal_Website/
 ├── data/resume_data.py     # 简历数据（改网站内容只需改这里）
 ├── export_data.py          # 把简历数据导出为静态 JSON（部署静态托管用）
 ├── requirements.txt
-└── frontend/               # Vue3 + Vite + Element Plus
+└── frontend/               # Vue3 + Vite
     ├── public/data/        # 导出的静态 JSON（构建时随 dist 一起发布）
     ├── src/
     │   ├── api.js          # axios 封装（统一走 data/*.json 相对路径）
-    │   ├── styles/handdrawn.css   # 手绘设计系统 tokens
+    │   ├── styles/artistic.css    # Artistic 设计系统 tokens
     │   └── components/     # 导航/Hero/关于/技能/项目/教育/联系/Footer
     └── dist/               # 构建产物（Flask 托管 / 静态托管均用这份）
 ```

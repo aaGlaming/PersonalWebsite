@@ -35,7 +35,7 @@ Personal_Website/
 └── frontend/
     ├── public/data/           导出的 JSON（自动生成，勿手改）
     ├── src/components/        8 个页面板块组件（Vue）
-    ├── src/styles/handdrawn.css   手绘风格设计系统
+    ├── src/styles/artistic.css    Artistic / Gallery 设计系统
     ├── src/api.js             数据请求封装
     └── dist/                  构建产物（自动生成，勿手改）
 ```
@@ -101,7 +101,7 @@ git push        # 推送后线上自动重新构建
 
 | 想改什么 | 文件 |
 |----------|------|
-| 颜色/阴影/圆角等设计变量 | `frontend/src/styles/handdrawn.css`（顶部 `:root`） |
+| 颜色/字体/留白等设计变量 | `frontend/src/styles/artistic.css`（顶部 `:root`） |
 | 某个板块的内容布局 | `frontend/src/components/` 对应组件 |
 | 网站标题/SEO 描述/字体 | `frontend/index.html` |
 

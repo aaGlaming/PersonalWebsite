@@ -15,181 +15,157 @@ function go(id) {
 
 <template>
   <section id="home" class="hero">
-    <div class="hd-container grid">
-      <div class="left">
-        <span class="hd-sticker hello">Hi, 我是</span>
-        <h1 class="name">{{ profile.name || '陆杨磊' }}</h1>
-        <h2 class="title">
-          {{ profile.title || '数据分析 · 数据挖掘' }}
-          <span class="bang">!</span>
-        </h2>
-        <p class="slogan">"{{ profile.slogan }}"</p>
-        <div class="cta">
-          <el-button type="primary" size="large" @click="go('projects')">
-            看看我的项目 →
-          </el-button>
-          <el-button size="large" @click="go('contact')">联系我</el-button>
-        </div>
-        <p class="contact-hint">
-          📞 {{ profile.phone }} · ✉️ {{ profile.email }}
+    <div class="art-container frame">
+      <div class="col copy">
+        <p class="meta kicker">
+          {{ profile.studio || 'ATELIER L.Y.L.' }}
+          <span>·</span>
+          {{ profile.location || 'Chongqing' }}
+          <span>·</span>
+          Ed. 2026
         </p>
+        <h1>
+          <span>Work</span>
+          <span>is a</span>
+          <span class="accent">record.</span>
+        </h1>
+        <p class="lead">
+          {{ profile.name }}
+          <em>{{ profile.title }}</em>
+        </p>
+        <p class="slogan">{{ profile.slogan }}</p>
+        <div class="actions">
+          <a class="art-link" href="#projects" @click.prevent="go('projects')">
+            View works <span class="arrow">→</span>
+          </a>
+          <a class="art-link" href="#contact" @click.prevent="go('contact')">
+            Contact
+          </a>
+        </div>
       </div>
 
-      <div class="right">
-        <div class="avatar-frame">
-          <span class="corner tl"></span>
-          <span class="corner tr"></span>
-          <span class="corner bl"></span>
-          <span class="corner br"></span>
-          <div class="avatar wobbly-md">
-            <span class="face">数据分析<br />打工人</span>
-          </div>
+      <aside class="col plate" aria-hidden="true">
+        <div class="plate-inner">
+          <p class="vert">Exhibition / 01</p>
+          <div class="block"></div>
+          <p class="caption">
+            FIG. 00
+            <br />Untitled Portrait
+            <br />Charcoal on ivory
+            <br />{{ profile.name }}
+          </p>
         </div>
-        <!-- 手绘箭头指向 CTA（仅桌面端） -->
-        <svg class="arrow hd-bounce" viewBox="0 0 120 90" fill="none">
-          <path
-            d="M100 8 C 70 20, 50 40, 28 66 M28 66 l 4 -18 M28 66 l 18 -2"
-            stroke="#2d5da1"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-dasharray="7 6"
-          />
-        </svg>
-        <!-- 弹跳装饰圆 -->
-        <span class="deco-circle hd-bounce"></span>
-      </div>
+      </aside>
     </div>
+    <p class="foot-meta art-container">
+      {{ profile.phone }}
+      <span>/</span>
+      {{ profile.email }}
+    </p>
   </section>
 </template>
 
 <style scoped>
 .hero {
-  padding: 96px 24px 72px;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 88px 0 48px;
 }
-.grid {
+.frame {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 48px;
-  align-items: center;
+  align-items: end;
 }
-@media (min-width: 768px) {
-  .grid { grid-template-columns: 1.2fr 1fr; }
+.kicker {
+  margin: 0 0 28px;
 }
-.hello {
-  font-size: 20px;
-  margin-bottom: 8px;
+.kicker span { margin: 0 8px; color: var(--vermilion); }
+h1 {
+  margin: 0;
+  font-size: clamp(64px, 9vw, 160px);
+  display: flex;
+  flex-direction: column;
 }
-.name {
-  font-size: 64px;
-  margin: 12px 0 0;
+h1 span { display: block; }
+.accent { color: var(--vermilion); font-style: italic; }
+.lead {
+  margin: 28px 0 0;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
-.title {
-  font-size: 34px;
-  margin: 4px 0 0;
-  color: var(--hd-blue);
-}
-.bang {
-  display: inline-block;
-  color: var(--hd-accent);
-  transform: rotate(12deg);
-  transition: transform 0.2s ease;
-}
-.bang:hover {
-  transform: rotate(-12deg) scale(1.3);
+.lead em {
+  font-style: normal;
+  color: var(--warm-gray);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 .slogan {
-  font-size: 20px;
+  max-width: 28ch;
   margin: 20px 0 0;
-  color: rgba(45, 45, 45, 0.75);
+  color: color-mix(in srgb, var(--charcoal) 72%, transparent);
 }
-.cta {
+.actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 28px;
+  gap: 28px;
+  margin-top: 36px;
 }
-.contact-hint {
-  margin-top: 20px;
-  color: rgba(45, 45, 45, 0.55);
-  font-size: 16px;
+.plate {
+  min-height: 320px;
 }
-.right {
+.plate-inner {
   position: relative;
-  display: flex;
-  justify-content: center;
+  height: 100%;
+  min-height: 360px;
+  background: var(--charcoal);
+  color: var(--paper);
+  padding: 24px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
-.avatar-frame {
-  position: relative;
-  padding: 18px;
+.vert {
+  margin: 0;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: color-mix(in srgb, var(--paper) 55%, transparent);
+  justify-self: end;
 }
-.corner {
-  position: absolute;
-  width: 34px;
-  height: 34px;
+.block {
+  width: min(46%, 180px);
+  height: 42%;
+  background: var(--vermilion);
+  justify-self: start;
+  align-self: center;
+  margin-left: 8%;
 }
-.corner.tl {
-  top: 0; left: 0;
-  border-top: 4px solid var(--hd-fg);
-  border-left: 4px solid var(--hd-fg);
-  border-top-left-radius: 60% 70%;
+.caption {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--paper) 70%, transparent);
 }
-.corner.tr {
-  top: 0; right: 0;
-  border-top: 4px solid var(--hd-fg);
-  border-right: 4px solid var(--hd-fg);
-  border-top-right-radius: 70% 60%;
+.foot-meta {
+  margin-top: 48px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
 }
-.corner.bl {
-  bottom: 0; left: 0;
-  border-bottom: 4px solid var(--hd-fg);
-  border-left: 4px solid var(--hd-fg);
-  border-bottom-left-radius: 70% 60%;
-}
-.corner.br {
-  bottom: 0; right: 0;
-  border-bottom: 4px solid var(--hd-fg);
-  border-right: 4px solid var(--hd-fg);
-  border-bottom-right-radius: 60% 70%;
-}
-.avatar {
-  width: 220px;
-  height: 220px;
-  background: var(--hd-postit);
-  border: 3px solid var(--hd-border);
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(1.5deg);
-}
-.face {
-  font-family: var(--font-marker);
-  font-size: 34px;
-  text-align: center;
-  line-height: 1.4;
-  transform: rotate(-2deg);
-}
-.arrow {
-  position: absolute;
-  left: -60px;
-  bottom: -30px;
-  width: 110px;
-  transform: rotate(-10deg);
-}
-.deco-circle {
-  position: absolute;
-  top: -26px;
-  right: 8px;
-  width: 34px;
-  height: 30px;
-  background: var(--hd-accent);
-  border: 2px solid var(--hd-border);
-  border-radius: 48% 55% 52% 46%;
-  opacity: 0.9;
-}
-@media (max-width: 767px) {
-  .arrow, .deco-circle { display: none; }
-  .name { font-size: 48px; }
-  .title { font-size: 27px; }
+.foot-meta span { margin: 0 12px; color: var(--vermilion); }
+@media (min-width: 900px) {
+  .frame {
+    grid-template-columns: 7fr 5fr;
+    gap: 64px;
+  }
+  .plate-inner { min-height: 520px; }
 }
 </style>

@@ -10,79 +10,96 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section id="about" class="hd-section">
-    <div class="hd-container">
-      <div class="hd-section-title">
-        <h2>关于我</h2>
-        <svg class="squiggle" viewBox="0 0 120 20" fill="none">
-          <path
-            d="M4 12 C 20 4, 32 18, 48 11 C 64 4, 78 18, 94 11 C 104 7, 110 9, 116 10"
-            stroke="#ff4d4d" stroke-width="3" stroke-linecap="round"
-          />
-        </svg>
-      </div>
+  <section id="about" class="art-section">
+    <div class="art-container">
+      <header class="head">
+        <p class="meta">01 — Biography</p>
+        <h2>关于</h2>
+      </header>
+      <hr class="rule" />
 
-      <div class="hd-card intro-card">
-        <span class="hd-tape"></span>
-        <p>
-          <span class="dropcap">{{ (profile.intro || '').slice(0, 1) }}</span>
+      <div class="layout">
+        <p class="intro">
+          <span class="drop">{{ (profile.intro || '重').slice(0, 1) }}</span>
           {{ (profile.intro || '').slice(1) }}
         </p>
-      </div>
 
-      <div class="grid">
-        <div
-          v-for="(h, i) in profile.highlights || []"
-          :key="h.title"
-          class="hd-postit note"
-          :style="{
-            transform: `rotate(${[-1.6, 1.2, -1, 1.8][i % 4]}deg)`,
-            marginTop: i % 2 ? '22px' : '0',
-          }"
-        >
-          <span class="hd-tack"></span>
-          <h3>{{ h.title }}</h3>
-          <p>{{ h.body }}</p>
-        </div>
+        <ol class="notes">
+          <li v-for="(h, i) in profile.highlights || []" :key="h.title">
+            <span class="idx">Fig. {{ String(i + 1).padStart(2, '0') }}</span>
+            <h3>{{ h.title }}</h3>
+            <p>{{ h.body }}</p>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.intro-card {
-  padding: 32px 36px;
-  font-size: 19px;
-  margin-bottom: 48px;
-  transform: rotate(-0.3deg);
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
 }
-.dropcap {
-  float: left;
-  font-family: var(--font-marker);
-  font-size: 56px;
-  line-height: 1;
-  padding: 4px 12px 0 0;
-  color: var(--hd-accent);
-}
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-}
-@media (min-width: 768px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-}
-.note {
-  padding: 30px 26px 24px;
-}
-.note h3 {
-  margin: 0 0 8px;
-  font-size: 22px;
-  color: var(--hd-blue);
-}
-.note p {
+h2 {
   margin: 0;
-  font-size: 16px;
+  font-size: clamp(48px, 7vw, 92px);
+}
+.layout {
+  display: grid;
+  gap: 56px;
+  padding-top: 48px;
+}
+.intro {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 22px);
   line-height: 1.75;
+  max-width: 46ch;
+}
+.drop {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 86px;
+  line-height: 0.75;
+  padding: 8px 12px 0 0;
+  color: var(--vermilion);
+}
+.notes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.notes li {
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+}
+.notes li:last-child { border-bottom: 1px solid var(--line); }
+.idx {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vermilion);
+  margin-bottom: 8px;
+}
+h3 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+.notes p {
+  margin: 0;
+  color: color-mix(in srgb, var(--charcoal) 75%, transparent);
+  font-size: 15px;
+}
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 7fr 5fr;
+    align-items: start;
+  }
 }
 </style>
