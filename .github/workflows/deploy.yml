@@ -29,7 +29,7 @@ jobs:
         run: npm ci
       - name: Build (GitHub Pages 子路径)
         working-directory: frontend
-        run: npm run build -- --base=/Personal_Website/
+        run: npm run build -- --base=/PersonalWebsite/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist

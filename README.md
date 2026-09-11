@@ -5,12 +5,12 @@
 
 线上版本部署在 **GitHub Pages**（纯静态模式，每次 push 自动部署）；本地开发使用 Flask，两者页面与数据完全一致。
 
-**线上地址**：https://aaglaming.github.io/Personal_Website/
+**线上地址**：https://aaglaming.github.io/PersonalWebsite/
 
 ## 目录结构
 
 ```
-Personal_Website/
+PersonalWebsite/
 ├── app.py                  # Flask 入口：注册 API、托管 frontend/dist
 ├── routes.py               # /api 路由 + /data/*.json 兼容路由（Blueprint）
 ├── data/resume_data.py     # 简历数据（改网站内容只需改这里）
@@ -66,7 +66,7 @@ cd frontend && npm run dev
 ## 线上部署（GitHub Pages，免费）
 
 - 工作流：`.github/workflows/deploy.yml`，push 到 main 自动构建部署
-- 构建命令：`npm run build -- --base=/Personal_Website/`（GitHub Pages 子路径）
+- 构建命令：`npm run build -- --base=/PersonalWebsite/`（GitHub Pages 子路径）
 - 仓库 Settings → Pages → Source 需设为 **GitHub Actions**
 
 > 备选：EdgeOne Pages（构建命令 `cd frontend && npm install && npm run build`，输出目录 `frontend/dist`），

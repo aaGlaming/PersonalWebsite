@@ -1,7 +1,7 @@
 # 个人网站操作指南
 
-> 线上地址：**https://aaglaming.github.io/Personal_Website/**
-> 代码仓库：**https://github.com/aaGlaming/Personal_Website**
+> 线上地址：**https://aaglaming.github.io/PersonalWebsite/**
+> 代码仓库：**https://github.com/aaGlaming/PersonalWebsite**
 
 ---
 
@@ -24,7 +24,7 @@
 ### 目录结构与职责
 
 ```
-Personal_Website/
+PersonalWebsite/
 ├── data/resume_data.py        ★ 简历数据（改内容只动这里）
 ├── export_data.py             ★ 把简历数据导出为静态 JSON
 ├── app.py                     Flask 入口（API + 托管前端产物）
@@ -114,12 +114,12 @@ git push        # 推送后线上自动重新构建
 推送代码到 `main` 分支后，GitHub Actions（`.github/workflows/deploy.yml`）自动执行：
 
 1. 安装 frontend 依赖
-2. 执行 `npm run build -- --base=/Personal_Website/`（子路径前缀是 GitHub Pages 必需的）
+2. 执行 `npm run build -- --base=/PersonalWebsite/`（子路径前缀是 GitHub Pages 必需的）
 3. 把 `frontend/dist` 发布到 GitHub Pages
 
 ### 查看部署状态
 
-打开 https://github.com/aaGlaming/Personal_Website/actions ，每次 push 都有一条记录：
+打开 https://github.com/aaGlaming/PersonalWebsite/actions ，每次 push 都有一条记录：
 - ✅ 绿色勾 = 部署成功
 - ❌ 红色叉 = 失败，点进去看报错；修复后 push 会自动重试，或点「Re-run jobs」
 
