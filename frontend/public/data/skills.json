@@ -1,85 +1,85 @@
 [
   {
-    "category": "语言与工程",
+    "category": "Python 后端与数据",
     "icon": "code",
     "items": [
       {
-        "name": "Python",
-        "level": 90,
-        "desc": "FastAPI、RAG 管线、评测脚本、数据处理"
+        "name": "Python / FastAPI",
+        "level": 95,
+        "desc": "RAG 服务、Agent API、SSE 流式问答与后台任务"
       },
       {
-        "name": "JavaScript / Vue 3",
-        "level": 80,
-        "desc": "单页应用、状态管理、SSE 流式界面"
+        "name": "SQL / 数据建模",
+        "level": 85,
+        "desc": "SQLite、MySQL、SQLAlchemy 与评审/工单业务数据"
       },
       {
-        "name": "SQL",
-        "level": 80,
-        "desc": "SQLite / MySQL 业务数据与日志查询"
+        "name": "数据处理与评测",
+        "level": 85,
+        "desc": "文档解析、数据清洗、检索指标与端到端验收"
       }
     ]
   },
   {
-    "category": "LLM 应用",
+    "category": "RAG 与检索工程",
     "icon": "brain",
     "items": [
       {
-        "name": "RAG",
+        "name": "Hybrid Retrieval",
+        "level": 95,
+        "desc": "向量 + BM25、RRF、父子块、过滤与可选重排"
+      },
+      {
+        "name": "RAG 评测与证据",
         "level": 90,
-        "desc": "切分、Embedding、混合检索、来源引用、拒答"
+        "desc": "Hit@K、MRR、引用连续性、Faithfulness 与 Relevancy"
       },
       {
-        "name": "Prompt / Agent",
-        "level": 85,
-        "desc": "系统提示、多轮改写、LangChain 工具调用"
-      },
-      {
-        "name": "OpenAI 兼容 API",
-        "level": 85,
-        "desc": "DeepSeek / 千问等，流式 Chat Completions"
+        "name": "多模态 / 图谱增强",
+        "level": 80,
+        "desc": "Neo4j、Chinese-CLIP、VLM、Self-RAG 与 CRAG"
       }
     ]
   },
   {
-    "category": "检索与后端",
+    "category": "Agent 与工作流",
     "icon": "database",
     "items": [
       {
-        "name": "FastAPI",
+        "name": "LangGraph / LangChain",
+        "level": 90,
+        "desc": "Supervisor、专项 Agent、状态图与可恢复流程"
+      },
+      {
+        "name": "工具调用与结构化输出",
+        "level": 90,
+        "desc": "Pydantic schema、工具白名单、预算与确定性校验"
+      },
+      {
+        "name": "人工确认与审计",
         "level": 85,
-        "desc": "REST、SSE、后台任务、配置与鉴权脱敏"
-      },
-      {
-        "name": "向量库 / Embedding",
-        "level": 80,
-        "desc": "Chroma、BGE，知识库隔离与入库流水线"
-      },
-      {
-        "name": "Hybrid Search",
-        "level": 80,
-        "desc": "BM25 + 向量 RRF 融合，阈值过滤与评测"
+        "desc": "高风险确认、轨迹记录、来源引用与结果回溯"
       }
     ]
   },
   {
-    "category": "前端与交付",
+    "category": "前端与工程交付",
     "icon": "chart",
     "items": [
       {
         "name": "Vue 3 / TypeScript",
+        "level": 90,
+        "desc": "知识库、评审、设施运维与互动站点单页应用"
+      },
+      {
+        "name": "Vite / Element Plus / ECharts",
+        "level": 85,
+        "desc": "管理后台、可视化大屏、流式对话与交互组件"
+      },
+      {
+        "name": "Docker / Nginx / PWA",
         "level": 80,
-        "desc": "对话、知识库、设置页与路由拆分"
-      },
-      {
-        "name": "流式交互 / PWA",
-        "level": 75,
-        "desc": "SSE 逐字输出、Service Worker、静态托管"
-      },
-      {
-        "name": "Git / 桌面包",
-        "level": 75,
-        "desc": "版本协作；Tauri + PyInstaller 本地交付"
+        "desc": "Compose 部署、GitHub Pages、静态托管与离线访问"
       }
     ]
   }

@@ -1,25 +1,25 @@
 [
   {
     "id": "my-rag",
-    "name": "个人知识库 RAG",
+    "name": "My RAG · 个人知识库问答与评测平台",
     "role": "负责人",
-    "period": "2026.06 — 2026.09",
+    "period": "2026.09",
     "featured": true,
-    "medium": "Vue 3 / FastAPI / Chroma",
-    "url": "https://github.com/aaGlaming/My-Owned-RAG",
-    "summary": "手写 RAG 管线的个人知识库：上传文档 → 解析切分 → 本地 BGE 向量化 → 混合检索 → OpenAI 兼容 LLM 流式生成，回答带来源。",
+    "medium": "FastAPI / Vue 3 / Chroma / LlamaIndex",
+    "url": "https://github.com/aaGlaming/SelfRAG",
+    "summary": "面向个人资料管理的本地 RAG 应用：支持多格式文档与图片入库、混合检索、引用式问答，以及可切换的 Self-RAG、CRAG 和模块化检索流程。",
     "points": [
-      "独立实现 Loader / Splitter / Embedding / Store / Fusion / Retrieve / Prompt / Generate，不套 LangChain",
-      "默认向量 + BM25 经 RRF 融合；多轮追问先 Query Rewrite；低于阈值则拒答且不调用 LLM",
-      "SSE 流式输出，来源含文件名、页码与片段；评测脚本与线上共用 retrieve()，对比 Hit@K / MRR",
-      "小样本评测（2026-09-07，20 问）：hybrid Hit@3 85%、MRR 0.7625，优于纯向量；可打包为 Windows 桌面应用"
+      "支持 PDF、DOCX、Markdown、TXT 与常见图片的解析、索引、管理和来源回溯",
+      "向量检索与 BM25 通过带权 RRF 融合，结合阈值过滤；无有效命中时直接拒答并跳过 LLM 调用",
+      "统一 retrieve_multi() 服务线上问答、离线评测、Self-RAG、CRAG 和模块化模式，支持 Query Rewrite、HyDE、Step-Back 与多查询扩展",
+      "可选接入 Neo4j 知识图谱、Chinese-CLIP 多模态检索、重排和联网兜底，并持久化检索日志与自动评估结果"
     ],
     "tags": [
       "RAG",
       "FastAPI",
       "Chroma",
-      "BGE",
-      "Hybrid Search"
+      "Self-RAG",
+      "Multimodal"
     ]
   },
   {
@@ -46,92 +46,49 @@
     ]
   },
   {
-    "id": "ai-agent",
-    "name": "数据分析智能体项目",
+    "id": "municipal-facility-ops",
+    "name": "市政设施巡检与维修平台",
     "role": "负责人",
-    "period": "2025.05 — 2025.06",
-    "featured": false,
-    "medium": "Python / Streamlit / LangChain",
-    "url": "",
-    "summary": "基于 Python、Streamlit、LangChain 开发集成多种 AI 能力的智能处理平台，涵盖文本分析与数据分析两大核心模块。",
+    "period": "2026.10",
+    "featured": true,
+    "medium": "FastAPI / Vue 3 / MySQL / LangGraph",
+    "url": "https://github.com/aaGlaming/municipal-facility-ops",
+    "summary": "面向道路、路灯、交通信号和公共设施的城市运行工作台，串联问题上报、设施识别、巡检、SLA 判断、工单调度、维修验收与知识问答。",
     "points": [
-      "文本分析模块支持摘要、翻译、情感分析、文本生成及基于文档/网页的智能问答",
-      "数据分析模块实现数据上传、清洗、统计与多类型可视化",
-      "集成 OpenAI 等大模型 API，实现多轮对话记忆、RAG 智能问答",
-      "支持 CSV/Excel 上传，生成柱状图、热力图等图表，支持自然语言绘图"
+      "用 LangGraph 编排 Supervisor、分诊、设施识别、SLA、巡检、调度、安全和验收 Agent，形成可追踪的业务闭环",
+      "实现设施台账、问题上报、巡检任务、工单状态机、逾期升级、维修证据和验收记录",
+      "接入 Chroma 文档库、解析切分、Embedding、关键词检索、Rerank 和证据回溯，Agent 建议带来源",
+      "Vue 3 + TypeScript 管理端覆盖值守总览、城市运行大屏、设施地图、工单中心、Agent 工作台和 RAG 工作台"
     ],
     "tags": [
-      "LangChain",
-      "RAG",
-      "Streamlit",
-      "OpenAI API"
-    ]
-  },
-  {
-    "id": "ad-warehouse",
-    "name": "广告投放数仓与流量分析可视化平台",
-    "role": "组员",
-    "period": "2024.05 — 2024.06",
-    "featured": false,
-    "medium": "Hive / Kafka / ClickHouse",
-    "url": "",
-    "summary": "搭建广告投放全链路数仓，从日志采集到可视化看板，识别异常流量并支撑投放运营实时监控。",
-    "points": [
-      "搭建 Flume+Kafka 实时日志采集链路，DataX 全量同步 MySQL 业务库至 HDFS，Shell 调度自动化采集入 ODS 层",
-      "基于 Hive 构建 ODS/DIM/DWD 三层广告数仓，自定义 UDF 解析 IP 归属地与 UserAgent，识别 GIVT/SIVT 异常流量",
-      "基于 XGBoost 构建异常流量分类模型，Prophet 实现流量时序预测，独立完成模型构建、特征工程与落地入库",
-      "Spark JDBC 将 Hive 明细写入 ClickHouse，FineBI 对接数据源制作交互图表与多维筛选仪表板",
-      "实现省份下钻城市、多维统计曝光/点击/异常流量指标，支撑业务自助分析报表"
-    ],
-    "tags": [
-      "Hive",
-      "Kafka",
-      "ClickHouse",
-      "XGBoost",
-      "FineBI"
-    ]
-  },
-  {
-    "id": "teddy-cup",
-    "name": "生产线故障自动识别与人员配置",
-    "role": "负责人",
-    "period": "2024.04 — 2024.05",
-    "featured": false,
-    "medium": "Python / Random Forest",
-    "url": "",
-    "summary": "第十五届泰迪杯数据挖掘挑战赛项目，建模解决生产线故障自动识别与人员配置问题。",
-    "points": [
-      "使用 Python 对 700 万条以上数据进行清洗，并处理数据失衡",
-      "根据工业流程分析数据特征，筛选关键维度，通过定义新标签构建新特征",
-      "构建随机森林模型进行故障诊断，采用准确率、召回率、精确率和 F1 值综合评估识别效果"
-    ],
-    "tags": [
-      "Python",
-      "随机森林",
-      "特征工程",
-      "数据清洗"
-    ]
-  },
-  {
-    "id": "e-commerce",
-    "name": "基于 SpringBoot 的电商管理系统",
-    "role": "负责人",
-    "period": "2024.05 — 2024.06",
-    "featured": false,
-    "medium": "SpringBoot / Vue / MySQL",
-    "url": "",
-    "summary": "SpringBoot + Vue 技术栈，构建涵盖商品、用户、订单、数据分析核心模块的电商管理平台。",
-    "points": [
-      "满足客户购物（浏览、下单支付、订单查询）与商户管理（上下架、库存监控、数据统计）需求",
-      "划分超级管理员、商品管理员等不同权限角色，实现完整交易流程",
-      "完成前端页面设计与后端功能开发，实现前后端高效交互",
-      "实现商品多级分类、库存预警、订单状态追踪、销售数据分析等核心功能"
-    ],
-    "tags": [
-      "SpringBoot",
+      "LangGraph",
+      "FastAPI",
       "Vue",
       "MySQL",
-      "RBAC"
+      "RAG"
+    ]
+  },
+  {
+    "id": "paper-review",
+    "name": "竞赛论文预审工作台",
+    "role": "负责人",
+    "period": "2026.10",
+    "featured": true,
+    "medium": "FastAPI / LangGraph / MySQL / Chroma",
+    "url": "https://github.com/aaGlaming/paper-review",
+    "summary": "面向竞赛论文预审的可恢复评审工作台，将论文解析、章节确认、按量规评分、一致性审查、修改建议和 AI 问询串成带证据的评审流程。",
+    "points": [
+      "用 LangGraph 编排 parse → confirm → retrieve → score 状态图，评分前通过 interrupt() 等待人工确认章节树",
+      "设计 evidence、topic fit、coherence、review、verifier 五类 Agent，配合 16 个结构化工具契约和调用预算",
+      "采用 Chroma child + MySQL parent 父子块、三路召回和连续原句校验，证据不足时不参与评分",
+      "持久化评审结果、引用证据、Agent 轨迹和修改清单，支持权限控制、记录回溯、AI 问询与 Docker Compose 部署"
+    ],
+    "tags": [
+      "LangGraph",
+      "Agent",
+      "Evidence RAG",
+      "MySQL",
+      "Vue"
     ]
   }
 ]

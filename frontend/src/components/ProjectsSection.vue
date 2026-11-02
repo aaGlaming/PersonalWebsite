@@ -17,7 +17,7 @@ onMounted(async () => {
         <h2>作品</h2>
       </header>
       <p class="lede">
-        前两件为近期可演示应用；末两件为竞赛与课程系统档案。
+        四件作品覆盖本地 RAG、城市设施运维、论文评审与互动式 Web 产品。
       </p>
       <hr class="rule" />
 
