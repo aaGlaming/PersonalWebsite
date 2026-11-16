@@ -26,7 +26,7 @@ onMounted(loadProjects)
         <p class="meta">03 — Selected projects</p>
         <h2>项目</h2>
       </header>
-      <p class="lede">两段团队项目经历：从业务输入到 Agent 执行，再到结果核验。个人工作与团队成果分别呈现。</p>
+      <p class="lede">两段团队项目经历：从业务输入到 Agent 执行，再到结果核验。这里记录我的模块开发与流程衔接工作。</p>
       <hr class="rule" />
       <p v-if="status === 'loading'" role="status">正在加载项目…</p>
       <p v-else-if="status === 'error'" role="alert">

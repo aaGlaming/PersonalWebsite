@@ -8,7 +8,6 @@
     "category": "resume",
     "featured": true,
     "medium": "LangGraph、LangChain、Router+Skill、ReAct、Multi-Agent、Graph-Workflow、MCP、Chroma/MySQL双路召回、统一工具执行器、审计哈希链、OpenAI-compatible API。",
-    "url": "https://github.com/aaGlaming/municipal-facility-ops",
     "summary": "面向物业管理公司的设施运维平台，覆盖水泵、电梯、消防、门禁和公共照明。四类Agent串起报修、调度、安全评估与维修验收，支持多项目并发报修和归档。",
     "scope": "我的模块：问题受理、维修验收 Agent，以及主流程衔接与工具接入。",
     "workflow": [
@@ -40,24 +39,6 @@
         "body": "工具请求交给统一执行器，验收写入待确认后重新校验。节点处理参数错误、工具拒绝和调用异常，并用迭代上限限制重复流转。"
       }
     ],
-    "metrics": [
-      {
-        "value": "0",
-        "label": "重复派工",
-        "detail": "1,800 条工单并发导入"
-      },
-      {
-        "value": "180 ms",
-        "label": "写入 P95",
-        "detail": "65 并发 / 50 QPS"
-      },
-      {
-        "value": "1,814",
-        "label": "审计留痕",
-        "detail": "4 小区、3,200 户测试基线"
-      }
-    ],
-    "results": "打通报修到归档6个环节，测试基线为4小区、3,200户。65并发/50 QPS下导入1,800条工单，零重复派工。写入P95为180ms，审计留痕1,814条。通过提示注入、越权、非法工具调用和高风险绕过4类安全验证。",
     "tags": [
       "LangGraph",
       "ReAct",
@@ -76,7 +57,6 @@
     "category": "resume",
     "featured": true,
     "medium": "LangGraph、LangChain、Graph-Workflow、Multi-Agent、ReAct、Chroma child / MySQL parent父子块索引、三路召回、Rerank、OpenAI-compatible API、审计哈希链。",
-    "url": "https://github.com/aaGlaming/paper-review",
     "summary": "面向高校数学建模竞赛的论文预审工作台，由作者确认章节类型后开展评审。论文分析、检索评审和核验三类Agent协作，检查档位与跨章节一致性，输出带原文出处的修改清单。",
     "scope": "我的模块：检索评审、核验 Agent，以及回流控制、模型响应适配与证据追溯。",
     "workflow": [
@@ -108,24 +88,6 @@
         "body": "修复返回形态差异、工具名越界、决策词表和无进展检测问题。记录评审与核验节点的输入输出、证据引用和停止原因。"
       }
     ],
-    "metrics": [
-      {
-        "value": "23.4 s",
-        "label": "单篇评审耗时",
-        "detail": "从确认章节到出报告"
-      },
-      {
-        "value": "82%",
-        "label": "人工评审一致率",
-        "detail": "50 篇往届论文回归"
-      },
-      {
-        "value": "0.86",
-        "label": "Recall@5",
-        "detail": "检索回归指标"
-      }
-    ],
-    "results": "回归50篇往届论文，从确认章节到出报告单篇23.4秒，人工通读约15分钟。档位判定与人工评审一致率82%，核验环节拦截改判18%。检索Recall@5为0.86，跨论文误引降到0，修改建议100%附带原文出处。",
     "tags": [
       "LangGraph",
       "Multi-Agent",

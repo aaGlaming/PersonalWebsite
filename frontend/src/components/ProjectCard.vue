@@ -28,17 +28,6 @@ defineProps({
           <li v-for="point in project.points" :key="point">{{ point }}</li>
         </ul>
       </div>
-      <aside class="results">
-        <h4>团队成果</h4>
-        <dl>
-          <div v-for="metric in project.metrics" :key="metric.label">
-            <dt>{{ metric.label }}</dt>
-            <dd>{{ metric.value }}</dd>
-            <p>{{ metric.detail }}</p>
-          </div>
-        </dl>
-        <p class="result-note">{{ project.results }}</p>
-      </aside>
     </div>
     <details>
       <summary>{{ compact ? '查看项目细节' : '查看流程机制与技术栈' }}</summary>
@@ -72,17 +61,10 @@ h3 { margin:0 0 20px; font-size:clamp(30px,3.7vw,48px); }
 .workflow li + li { border-left:1px solid var(--line); }
 .workflow li:not(:last-child)::after { content:'→'; position:absolute; right:-7px; top:50%; color:var(--vermilion); background:var(--paper); z-index:1; }
 .workflow span { display:block; font-size:10px; color:var(--vermilion); margin-bottom:8px; letter-spacing:.15em; }
-.body { display:grid; grid-template-columns:minmax(0,1fr) minmax(240px,.48fr); gap:48px; }
+.body { max-width:100%; }
 h4 { font-size:18px; margin:0 0 16px; }
 .contributions { list-style:none; padding:0; margin:0; }
 .contributions li { border-top:1px solid var(--line); padding:14px 0; font-size:15px; line-height:1.85; }
-.results { padding-left:28px; border-left:1px solid var(--line); }
-dl { margin:0; }
-dl div { border-top:1px solid var(--line); padding:14px 0; }
-dt { font-size:12px; color:var(--warm-gray); }
-dd { margin:4px 0; font-size:44px; line-height:1.15; font-family:var(--font-serif); color:var(--vermilion); }
-dl p { font-size:12px; color:var(--warm-gray); margin:4px 0; }
-.result-note { font-size:13px; line-height:1.85; color:var(--warm-gray); margin:14px 0 0; }
 details { border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin-top:28px; }
 summary { cursor:pointer; padding:18px 0; font-size:14px; }
 summary:hover { color:var(--vermilion); }
@@ -97,10 +79,6 @@ summary:hover { color:var(--vermilion); }
 .compact { padding:36px 0; }
 .compact h3 { font-size:clamp(28px,3vw,38px); }
 @media(max-width:800px) {
-  .body { grid-template-columns:1fr; gap:28px; }
-  .results { border-left:0; padding:0; }
-  dl { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
-  dd { font-size:34px; }
   .workflow { grid-template-columns:repeat(3,minmax(0,1fr)); }
   .workflow li:nth-child(4) { border-left:0; }
   .workflow li:nth-child(n+4) { border-top:1px solid var(--line); }
@@ -109,7 +87,6 @@ summary:hover { color:var(--vermilion); }
 }
 @media(max-width:400px) {
   .metadata { gap:8px 14px; }
-  dd { font-size:28px; }
   .workflow li { padding:14px 8px; font-size:13px; }
 }
 </style>
