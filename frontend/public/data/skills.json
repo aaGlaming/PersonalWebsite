@@ -1,85 +1,85 @@
 [
   {
-    "category": "Python 后端与数据",
+    "category": "Python 与接口开发",
     "icon": "code",
     "items": [
       {
-        "name": "Python / FastAPI",
-        "level": 95,
-        "desc": "RAG 服务、Agent API、SSE 流式问答与后台任务"
+        "name": "Python / FastAPI / Pydantic",
+        "desc": "API 开发、参数校验与结构化数据处理",
+        "proficiency": "实践"
       },
       {
-        "name": "SQL / 数据建模",
-        "level": 85,
-        "desc": "SQLite、MySQL、SQLAlchemy 与评审/工单业务数据"
+        "name": "MySQL",
+        "desc": "业务数据读写与关系型数据库",
+        "proficiency": "熟悉"
       },
       {
-        "name": "数据处理与评测",
-        "level": 85,
-        "desc": "文档解析、数据清洗、检索指标与端到端验收"
+        "name": "OpenAI-compatible API",
+        "desc": "模型接口封装、响应适配与调用异常处理",
+        "proficiency": "实践"
       }
     ]
   },
   {
-    "category": "RAG 与检索工程",
+    "category": "Agent 与工具调用",
     "icon": "brain",
     "items": [
       {
-        "name": "Hybrid Retrieval",
-        "level": 95,
-        "desc": "向量 + BM25、RRF、父子块、过滤与可选重排"
+        "name": "LangGraph / LangChain",
+        "desc": "状态图、共享状态、条件路由、ReAct 与回流控制",
+        "proficiency": "实践"
       },
       {
-        "name": "RAG 评测与证据",
-        "level": 90,
-        "desc": "Hit@K、MRR、引用连续性、Faithfulness 与 Relevancy"
+        "name": "Function Calling",
+        "desc": "结构化输出、工具契约与执行器接入",
+        "proficiency": "实践"
       },
       {
-        "name": "多模态 / 图谱增强",
-        "level": 80,
-        "desc": "Neo4j、Chinese-CLIP、VLM、Self-RAG 与 CRAG"
+        "name": "MCP / Skill",
+        "desc": "业务工具接入，按环节加载处理规范",
+        "proficiency": "实践"
       }
     ]
   },
   {
-    "category": "Agent 与工作流",
+    "category": "RAG 与评测",
     "icon": "database",
     "items": [
       {
-        "name": "LangGraph / LangChain",
-        "level": 90,
-        "desc": "Supervisor、专项 Agent、状态图与可恢复流程"
+        "name": "Chroma / 父子块索引",
+        "desc": "文档切分、索引构建与上下文组织",
+        "proficiency": "熟悉"
       },
       {
-        "name": "工具调用与结构化输出",
-        "level": 90,
-        "desc": "Pydantic schema、工具白名单、预算与确定性校验"
+        "name": "召回 / 重排 / 引用",
+        "desc": "多路召回、权限过滤、引用溯源与异常降级",
+        "proficiency": "熟悉"
       },
       {
-        "name": "人工确认与审计",
-        "level": 85,
-        "desc": "高风险确认、轨迹记录、来源引用与结果回溯"
+        "name": "Recall@K / MRR",
+        "desc": "固定样本、检索指标与失败案例分析",
+        "proficiency": "熟悉"
       }
     ]
   },
   {
-    "category": "前端与工程交付",
+    "category": "协作与开发工具",
     "icon": "chart",
     "items": [
       {
+        "name": "Codex / Cursor / Claude Code",
+        "desc": "辅助开发、代码复核、问题定位与测试",
+        "proficiency": "实践"
+      },
+      {
+        "name": "Docker / Nginx",
+        "desc": "容器化部署与运行环境",
+        "proficiency": "了解"
+      },
+      {
         "name": "Vue 3 / TypeScript",
-        "level": 90,
-        "desc": "知识库、评审、设施运维与互动站点单页应用"
-      },
-      {
-        "name": "Vite / Element Plus / ECharts",
-        "level": 85,
-        "desc": "管理后台、可视化大屏、流式对话与交互组件"
-      },
-      {
-        "name": "Docker / Nginx / PWA",
-        "level": 80,
-        "desc": "Compose 部署、GitHub Pages、静态托管与离线访问"
+        "desc": "前端技术与接口联调",
+        "proficiency": "了解"
       }
     ]
   }

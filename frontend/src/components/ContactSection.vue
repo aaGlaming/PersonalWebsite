@@ -30,7 +30,7 @@ async function copy(text, label) {
         <p class="meta">05 — Correspondence</p>
         <h2>联系</h2>
       </header>
-      <p class="invite">正在寻找 AI 应用开发相关机会。点击条目即可复制。</p>
+      <p class="invite">{{ profile.availability }}。点击条目即可复制。</p>
       <hr class="rule" />
 
       <div class="rows">

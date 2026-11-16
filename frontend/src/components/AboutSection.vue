@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { getProfile } from '../api'
+import WorkExperience from './WorkExperience.vue'
 
 const profile = ref({})
 
@@ -32,6 +33,7 @@ onMounted(async () => {
           </li>
         </ol>
       </div>
+      <WorkExperience :experiences="profile.experience || []" />
     </div>
   </section>
 </template>

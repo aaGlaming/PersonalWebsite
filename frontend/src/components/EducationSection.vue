@@ -24,7 +24,9 @@ onMounted(async () => {
           <h3>{{ edu.school }}</h3>
           <p class="degree">{{ edu.degree }}</p>
           <p class="period">{{ edu.period }}</p>
+          <p class="rank">{{ edu.rank }}</p>
           <p class="note">{{ edu.note }}</p>
+          <p class="research">{{ edu.research }}</p>
         </div>
 
         <ul class="honors">
@@ -74,6 +76,8 @@ h2 {
   max-width: 40ch;
   color: var(--warm-gray);
 }
+.rank { color:var(--vermilion); font-size:14px; }
+.research { color:var(--warm-gray); font-size:14px; line-height:1.8; margin-top:20px; }
 .honors {
   list-style: none;
   margin: 0;

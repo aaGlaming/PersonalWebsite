@@ -26,7 +26,7 @@ onMounted(async () => {
             <li v-for="item in g.items" :key="item.name">
               <div class="row">
                 <span class="name">{{ item.name }}</span>
-                <span class="lvl">{{ item.level }}</span>
+                <span class="lvl">{{ item.proficiency }}</span>
               </div>
               <p>{{ item.desc }}</p>
             </li>

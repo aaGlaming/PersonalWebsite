@@ -74,5 +74,5 @@ cd frontend && npm run dev
 
 ## 修改内容
 
-编辑 `data/resume_data.py` → 运行 `python export_data.py` → 提交推送后 EdgeOne 自动重新部署；
+编辑 `data/resume_data.py` → 运行 `python export_data.py` → 提交推送到 main 后，GitHub Actions 自动导出数据、构建并部署到 GitHub Pages；
 本地查看则重新 `npm run build`（或直接用 Flask 模式，无需构建）。

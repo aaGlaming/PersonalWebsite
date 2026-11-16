@@ -1,10 +1,146 @@
 [
   {
+    "id": "municipal-facility-ops",
+    "name": "物业设施巡检与维修平台",
+    "role": "Agent 开发",
+    "team": "6 人团队",
+    "period": "2026.02 — 2026.09",
+    "category": "resume",
+    "featured": true,
+    "medium": "LangGraph、LangChain、Router+Skill、ReAct、Multi-Agent、Graph-Workflow、MCP、Chroma/MySQL双路召回、统一工具执行器、审计哈希链、OpenAI-compatible API。",
+    "url": "https://github.com/aaGlaming/municipal-facility-ops",
+    "summary": "面向物业管理公司的设施运维平台，覆盖水泵、电梯、消防、门禁和公共照明。四类Agent串起报修、调度、安全评估与维修验收，支持多项目并发报修和归档。",
+    "scope": "我的模块：问题受理、维修验收 Agent，以及主流程衔接与工具接入。",
+    "workflow": [
+      "报修受理",
+      "计划调度",
+      "安全评估",
+      "维修作业",
+      "维修验收",
+      "关单归档"
+    ],
+    "points": [
+      "需求与流程梳理：协助梳理报修、巡检、派工和验收流程，列出受理与验收环节的输入输出、工具需求及异常分支。与另一名Agent研发约定共享状态和交接条件。",
+      "业务Agent开发：开发问题受理Agent，完成报修去重、故障分类和设施匹配。编写维修验收Agent的结果核验逻辑，配置提示词、结构化输出与ReAct循环，满足退出条件后交接。",
+      "工作流与回流控制：用Router、共享状态和条件边衔接流程，接入同事开发的调度与安全评估节点。信息不足时回流补充，验收失败则退回重派；通过迭代上限限制重复流转。",
+      "工具与知识接入：接入MCP档案、历史工单查询和受控状态回写工具，调用团队检索接口获取依据。按设施与环节加载故障处置SOP、验收清单Skill。工具请求交给统一执行器，配合联调验收待确认和确认后重校验。",
+      "异常处理与联调：处理受理、验收节点的参数错误、工具拒绝和调用异常。结合调用结果与审计记录定位问题，配合测试验证重复报修、信息不足、验收退回和审批流程。"
+    ],
+    "mechanisms": [
+      {
+        "title": "Agent 协作",
+        "body": "问题受理、计划调度、安全评估、维修验收四类 Agent 通过共享状态交接。信息不足回流上游，验收失败退回重派。"
+      },
+      {
+        "title": "知识与业务工具",
+        "body": "MCP 连接档案、历史工单和状态回写。检索接口提供业务依据，Skill 按设施与环节加载。本人接入团队提供的公共能力。"
+      },
+      {
+        "title": "审批与异常控制",
+        "body": "工具请求交给统一执行器，验收写入待确认后重新校验。节点处理参数错误、工具拒绝和调用异常，并用迭代上限限制重复流转。"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "0",
+        "label": "重复派工",
+        "detail": "1,800 条工单并发导入"
+      },
+      {
+        "value": "180 ms",
+        "label": "写入 P95",
+        "detail": "65 并发 / 50 QPS"
+      },
+      {
+        "value": "1,814",
+        "label": "审计留痕",
+        "detail": "4 小区、3,200 户测试基线"
+      }
+    ],
+    "results": "打通报修到归档6个环节，测试基线为4小区、3,200户。65并发/50 QPS下导入1,800条工单，零重复派工。写入P95为180ms，审计留痕1,814条。通过提示注入、越权、非法工具调用和高风险绕过4类安全验证。",
+    "tags": [
+      "LangGraph",
+      "ReAct",
+      "MCP / Skill",
+      "RAG",
+      "工具执行器",
+      "审计哈希链"
+    ]
+  },
+  {
+    "id": "paper-review",
+    "name": "竞赛论文预审工作台",
+    "role": "Agent 开发",
+    "team": "6 人团队",
+    "period": "2025.09 — 2026.01",
+    "category": "resume",
+    "featured": true,
+    "medium": "LangGraph、LangChain、Graph-Workflow、Multi-Agent、ReAct、Chroma child / MySQL parent父子块索引、三路召回、Rerank、OpenAI-compatible API、审计哈希链。",
+    "url": "https://github.com/aaGlaming/paper-review",
+    "summary": "面向高校数学建模竞赛的论文预审工作台，由作者确认章节类型后开展评审。论文分析、检索评审和核验三类Agent协作，检查档位与跨章节一致性，输出带原文出处的修改清单。",
+    "scope": "我的模块：检索评审、核验 Agent，以及回流控制、模型响应适配与证据追溯。",
+    "workflow": [
+      "上传解析",
+      "章节确认",
+      "论文分析",
+      "检索评审",
+      "结果核验",
+      "修改清单"
+    ],
+    "points": [
+      "评审流程设计：协助梳理章节确认、逐维评审与报告输出流程，约定证据、档位和核验结果的结构。与同事对齐论文分析、检索服务和评审Agent之间的接口。",
+      "检索评审Agent：按维度调用检索工具，读取Evidence并生成Review结论。结合原文判断档位、检查跨章节一致性，证据不足时通过ReAct循环自查。保留文档、版本和分块信息，便于回查引用。",
+      "核验与回流控制：开发核验Agent，限制其只能保档或降档，不能升档。通过LangGraph共享状态和条件边连接评审与核验，核验失败就退回重查。达到迭代上限仍未通过时，标记证据不足并转入报告环节。",
+      "模型与工具适配：编写模型响应适配、结构化结果解析和工具请求逻辑，修复返回形态差异、工具名越界等问题。收紧决策词表，修复无进展检测。接入团队执行器，配合验证权限、参数校验和高风险操作恢复。",
+      "证据追溯与回归：记录评审与核验节点的输入输出、工具调用、证据引用及停止原因，按轨迹定位异常。配合测试验证档位一致性、引用来源和核验回流，遇到检索问题与RAG同事共同排查。"
+    ],
+    "mechanisms": [
+      {
+        "title": "证据与评审",
+        "body": "按维度调用检索工具，读取 Evidence 后形成 Review。结合原文判断档位与跨章节一致性，并保留引用来源。"
+      },
+      {
+        "title": "核验回流",
+        "body": "核验只能保档或降档，不能升档。核验失败退回检索评审；达到迭代上限仍未通过时，标记证据不足。"
+      },
+      {
+        "title": "响应适配与追溯",
+        "body": "修复返回形态差异、工具名越界、决策词表和无进展检测问题。记录评审与核验节点的输入输出、证据引用和停止原因。"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "23.4 s",
+        "label": "单篇评审耗时",
+        "detail": "从确认章节到出报告"
+      },
+      {
+        "value": "82%",
+        "label": "人工评审一致率",
+        "detail": "50 篇往届论文回归"
+      },
+      {
+        "value": "0.86",
+        "label": "Recall@5",
+        "detail": "检索回归指标"
+      }
+    ],
+    "results": "回归50篇往届论文，从确认章节到出报告单篇23.4秒，人工通读约15分钟。档位判定与人工评审一致率82%，核验环节拦截改判18%。检索Recall@5为0.86，跨论文误引降到0，修改建议100%附带原文出处。",
+    "tags": [
+      "LangGraph",
+      "Multi-Agent",
+      "Evidence / Review",
+      "Chroma / MySQL",
+      "Rerank",
+      "引用溯源"
+    ]
+  },
+  {
     "id": "my-rag",
     "name": "My RAG · 个人知识库问答与评测平台",
     "role": "负责人",
     "period": "2026.09",
-    "featured": true,
+    "featured": false,
     "medium": "FastAPI / Vue 3 / Chroma / LlamaIndex",
     "url": "https://github.com/aaGlaming/SelfRAG",
     "summary": "面向个人资料管理的本地 RAG 应用：支持多格式文档与图片入库、混合检索、引用式问答，以及可切换的 Self-RAG、CRAG 和模块化检索流程。",
@@ -20,14 +156,15 @@
       "Chroma",
       "Self-RAG",
       "Multimodal"
-    ]
+    ],
+    "category": "practice"
   },
   {
     "id": "naiwa",
     "name": "NAIWADIY · 奶蛙世界",
     "role": "负责人",
     "period": "2026",
-    "featured": true,
+    "featured": false,
     "medium": "Vue 3 / FastAPI / PWA",
     "url": "https://aaglaming.github.io/NaiWa-Web/",
     "summary": "以独立视觉系统呈现的奶蛙主题站点：448+ 表情图库，抽卡、塔罗、梗图、心情测试、成就与桌宠，支持 PWA 离线访问。",
@@ -43,52 +180,7 @@
       "Pinia",
       "Canvas",
       "FastAPI"
-    ]
-  },
-  {
-    "id": "municipal-facility-ops",
-    "name": "市政设施巡检与维修平台",
-    "role": "负责人",
-    "period": "2026.10",
-    "featured": true,
-    "medium": "FastAPI / Vue 3 / MySQL / LangGraph",
-    "url": "https://github.com/aaGlaming/municipal-facility-ops",
-    "summary": "面向道路、路灯、交通信号和公共设施的城市运行工作台，串联问题上报、设施识别、巡检、SLA 判断、工单调度、维修验收与知识问答。",
-    "points": [
-      "用 LangGraph 编排 Supervisor、分诊、设施识别、SLA、巡检、调度、安全和验收 Agent，形成可追踪的业务闭环",
-      "实现设施台账、问题上报、巡检任务、工单状态机、逾期升级、维修证据和验收记录",
-      "接入 Chroma 文档库、解析切分、Embedding、关键词检索、Rerank 和证据回溯，Agent 建议带来源",
-      "Vue 3 + TypeScript 管理端覆盖值守总览、城市运行大屏、设施地图、工单中心、Agent 工作台和 RAG 工作台"
     ],
-    "tags": [
-      "LangGraph",
-      "FastAPI",
-      "Vue",
-      "MySQL",
-      "RAG"
-    ]
-  },
-  {
-    "id": "paper-review",
-    "name": "竞赛论文预审工作台",
-    "role": "负责人",
-    "period": "2026.10",
-    "featured": true,
-    "medium": "FastAPI / LangGraph / MySQL / Chroma",
-    "url": "https://github.com/aaGlaming/paper-review",
-    "summary": "面向竞赛论文预审的可恢复评审工作台，将论文解析、章节确认、按量规评分、一致性审查、修改建议和 AI 问询串成带证据的评审流程。",
-    "points": [
-      "用 LangGraph 编排 parse → confirm → retrieve → score 状态图，评分前通过 interrupt() 等待人工确认章节树",
-      "设计 evidence、topic fit、coherence、review、verifier 五类 Agent，配合 16 个结构化工具契约和调用预算",
-      "采用 Chroma child + MySQL parent 父子块、三路召回和连续原句校验，证据不足时不参与评分",
-      "持久化评审结果、引用证据、Agent 轨迹和修改清单，支持权限控制、记录回溯、AI 问询与 Docker Compose 部署"
-    ],
-    "tags": [
-      "LangGraph",
-      "Agent",
-      "Evidence RAG",
-      "MySQL",
-      "Vue"
-    ]
+    "category": "practice"
   }
 ]

@@ -25,15 +25,16 @@ function go(id) {
           Ed. 2026
         </p>
         <h1>
-          <span>Work</span>
-          <span>is a</span>
-          <span class="accent">record.</span>
+          <span>Build.</span>
+          <span>Verify.</span>
+          <span class="accent">Deliver.</span>
         </h1>
         <p class="lead">
           {{ profile.name }}
           <em>{{ profile.title }}</em>
         </p>
         <p class="slogan">{{ profile.slogan }}</p>
+        <p class="availability">{{ profile.availability }}</p>
         <div class="actions">
           <a class="art-link" href="#projects" @click.prevent="go('projects')">
             View works <span class="arrow">→</span>
@@ -109,6 +110,7 @@ h1 span { display: block; }
   margin: 20px 0 0;
   color: color-mix(in srgb, var(--charcoal) 72%, transparent);
 }
+.availability { font-size:12px; color:var(--vermilion); margin:16px 0 0; }
 .actions {
   display: flex;
   flex-wrap: wrap;
