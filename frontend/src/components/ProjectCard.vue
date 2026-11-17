@@ -43,9 +43,6 @@ defineProps({
     </details>
     <footer class="foot">
       <div class="tags"><span v-for="tag in project.tags" :key="tag">{{ tag }}</span></div>
-      <a v-if="project.url" class="art-link" :href="project.url" target="_blank" rel="noopener noreferrer" :aria-label="project.name + '：打开项目链接'">
-        {{ project.url.includes('github.com') ? '查看代码' : '访问网站' }} <span class="arrow">↗</span>
-      </a>
     </footer>
   </article>
 </template>
